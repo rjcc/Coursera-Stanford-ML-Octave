@@ -38,7 +38,12 @@ grad = zeros(size(theta));
 
 h_theta = sigmoid(X*theta);
 
-filterJ = [0;ones((size(theta)-[1 0]))];
+##make it all one and first element with zero
+##filterJ = [0;ones((size(theta)-[1 0]))];
+filterJ = theta;
+filterJ(:) = 1;
+filterJ(1,:) = 0;
+
 filter_theta = filterJ.*theta;
 %J = (-y'*log(h_theta)-(1-y)'*log(1-h_theta))/m + lambda*((filterJ.*theta)'*theta)/(2*m);
 J = (-y'*log(h_theta)-(1-y)'*log(1-h_theta))/m + lambda*(filter_theta'*filter_theta)/(2*m);
