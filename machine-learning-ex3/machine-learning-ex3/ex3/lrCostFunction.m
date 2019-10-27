@@ -38,8 +38,8 @@ grad = zeros(size(theta));
 
 h_theta = sigmoid(X*theta);
 
-##make it all one and first element with zero
-##filterJ = [0;ones((size(theta)-[1 0]))];
+% make it all one and first element with zero
+filterJ = [0;ones((size(theta)-[1 0]))];
 filterJ = theta;
 filterJ(:) = 1;
 filterJ(1,:) = 0;
